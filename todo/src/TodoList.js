@@ -1,30 +1,25 @@
 import React, { useState, useReducer } from 'react';
 import { listReducer, initialState } from './reducers/reducer';
 import Todo from './Todo'
+import './App.css';
 
-const TodoList = (props) => {  
-    const [state, dispatch] = useReducer(listReducer, initialState);
+const TodoList = () => {  
+    const [state, dispatch] = useReducer(listReducer, initialState);    
 
     return (
-      <div className="todo-list">
-          <h2>
-          Todo List
-          <i
-            onClick={() => dispatch({ type: 'TOGGLE_EDITING' })}
-            className="far fa-edit"
-          />
-        </h2>
+      <div className="todo-list">       
           
-        {/* {props.item.map(item => ( */}
-          <Todo
-            // key={item.id}
-            // item={item}
-            // toggleCompleted={props.toggleCompleted}
+        {state.items.map(item => {
+          return(
+          <Todo  
+            id={item.id}                    
+            item={item}            
+            key={item.id}
+            dispatch={dispatch}
           />
+          )
+          })}
         
-        <button className="clear-btn" type='button'>
-          Clear Completed
-        </button>
       </div>
     );
   };

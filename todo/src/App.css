@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -24,19 +26,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 html,
 body {
   width: 100%;
@@ -51,13 +40,14 @@ h2 {
   font-size: 2.5rem;
 }
 
-.item.completed {    
+.line-through {    
     text-decoration: line-through;
   }
 
   form {    
     display: flex;
     justify-content: center;
+    flex-direction: column;
   }
 
   .todo-list {
@@ -74,9 +64,11 @@ h2 {
     background-color: #2dd473;    
     color: white;
     font-size: 16px;
-    padding: 6px 14px;  
+    padding: 6px 14px;
+    margin: 20px 35%;
   }
 
-  .clear-btn {
-    margin: 20px 45%;
+  input {
+    margin: 20px 35%;
+    height: 30px;
   }

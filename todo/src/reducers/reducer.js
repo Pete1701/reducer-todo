@@ -1,26 +1,30 @@
 export const initialState = {
-  item: 'Learn about reducers',
-  completed: false,
-  id: 3892987589
+  items: [
+      {
+        item: 'Learn about reducers',
+        completed: false,
+        id: 3892987589
+      }
+  ]  
   };
 
-export const listReducer = (state = [], action) => {
+export const listReducer = (state, action) => {
     switch(action.type){
         case 'ADD_TODO':
-            return [
-                ...state,
-                {
-                    item: action.item,
+            console.log(action);
+            return {
+                items:[...state.items, {                    
+                    item: action.payload,
                     completed: false,
                     id: new Date()
-                }
-            ]
+                }]
+            }               
+            
         case 'TOGGLE_TODO':
-            return state.map(todo =>
-                (todo.id === action.id)
-                    ? {...todo, completed: !todo.completed}
-                    : todo
-      )
-        return state;
+            console.log(action)
+            return {...state,
+                items:state.items.map(item => item.id === action.payload ? { ...item, completed: !item.completed } : item )
+            }
+        default: return state;
     }    
 };

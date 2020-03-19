@@ -1,14 +1,16 @@
 import React from 'react'
 
-const Todo = ({ onClick, completed, item }) => (
+const Todo = ({ id, dispatch, completed, item }) => (  
   <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
+    className= {`item ${item.completed ? 'completed' : '' }`}
+    style={{ textDecoration: item.completed ? "line-through":""}}
+    onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: id })}
+    // onClick={() => dispatch({type:`TOGGLE_TODO`, payload:id})}
+    // className={ completed ? 'line-through' : ''
+    // }
   >
-    {item}
+    {item.item}
   </li>
 )
 
-export default Todo
+export default Todo;
