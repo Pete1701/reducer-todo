@@ -33,7 +33,9 @@ const TodoForm = props => {
         >
           Add Todo
         </button>
-        <button className="clear-btn" type='button'>
+        <button className="clear-btn" onClick={() => {
+          dispatch({ type: 'CLEAR_TODO', payload: newTodoText });
+        }}>
           Clear Completed
         </button>
       </form>
