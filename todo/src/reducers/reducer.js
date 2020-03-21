@@ -30,9 +30,10 @@ export const listReducer = (state, action) => {
             console.log('CLEAR', action)
             return {
                 ...state,
-                items: state.items.filter(item => { 
-                if (item.completed === true) { return false; }
-                    else { return true; }
+                items: state.items.filter(item => {
+                    return item.completed === false
+                // if (item.completed === true) { return false; }
+                //     else { return true; }
                 })
             }     
             

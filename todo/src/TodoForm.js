@@ -3,8 +3,8 @@ import { listReducer, initialState } from './reducers/reducer';
 import './App.css';
 
 const TodoForm = props => {
-    const [state, dispatch] = useReducer(listReducer, initialState);
-    const [newTodoText, setNewTodoText] = useState();
+    
+    const [newTodoText, setNewTodoText] = useState('');
 
     const handleChanges = e => {
       setNewTodoText(e.target.value);
@@ -27,14 +27,14 @@ const TodoForm = props => {
         onChange={handleChanges}
         name='newTodoText'
         />
-        <button onClick={() => {
-          dispatch({ type: 'ADD_TODO', payload: newTodoText });
+        <button type='submit' onClick={() => {
+          props.dispatch({ type: 'ADD_TODO', payload: newTodoText });
         }} 
         >
           Add Todo
         </button>
-        <button className="clear-btn" onClick={() => {
-          dispatch({ type: 'CLEAR_TODO', payload: newTodoText });
+        <button className="clear-btn" onClick={() => {          
+          props.dispatch({ type: 'CLEAR_TODO', payload: newTodoText });
         }}>
           Clear Completed
         </button>
